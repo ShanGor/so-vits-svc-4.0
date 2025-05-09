@@ -54,7 +54,7 @@ class TextAudioSpeakerLoader(torch.utils.data.Dataset):
 
         # Ideally, all data generated after Mar 25 should have .spec.pt
         if os.path.exists(spec_filename):
-            spec = torch.load(spec_filename)
+            spec = torch.load(spec_filename, weights_only=False)
         else:
             spec = spectrogram_torch(audio_norm, self.filter_length,
                                      self.sampling_rate, self.hop_length, self.win_length,
@@ -70,7 +70,7 @@ class TextAudioSpeakerLoader(torch.utils.data.Dataset):
         f0 = torch.FloatTensor(f0)
         uv = torch.FloatTensor(uv)
 
-        c = torch.load(filename+ ".soft.pt")
+        c = torch.load(filename + ".soft.pt", weights_only=False)
         c = utils.repeat_expand_2d(c.squeeze(0), f0.shape[0])
 
 
