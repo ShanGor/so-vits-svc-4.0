@@ -153,7 +153,7 @@ After completing the above steps, the dataset directory will contain the preproc
 * `all_in_mem`: Load all dataset to RAM. It can be enabled when the disk IO of some platforms is too low and the system memory is **much larger** than your dataset.
 
 ## 🏋️‍♀️ Training
-
+About batch size in the config file, if you have 6G vram, suggest input 2-3, if you have 8G vram, might input 4-6. 
 ```shell
 python train.py -c configs/config.json -m 44k
 ```
